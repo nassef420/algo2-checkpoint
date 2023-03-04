@@ -1,0 +1,38 @@
+ALGORITHM Dot_Product
+VAR
+ ps: a variable used to store the dot product of two vectors
+ v1: a variable used to store the first vector
+ v2: a variable used to store the second vector
+ n: a variable used to store the number of vectors to check
+ vectors: a variable used to store a list of vectors to check. Each vector is represented as a list of numbers.
+BEGIN
+ // Procedure to calculate dot product of two vectors
+ PROCEDURE dot_product (v1,v2)
+ FOR i = 0 to length of v1 -1 Dot_Product 
+   SET ps = ps + (v1[i]*v2[i])
+ END_FOR
+ RETURN ps
+ END PROCEDURE
+
+ // Algorithm to determine if n pairs of vectors are orthogonal
+ FUNCTION are_vectors_orthogonal(n, vectors)
+ FOR i = 0 to n - 1
+ FOR j = i + 1 to n - 1
+ SET v1 = vectors[i]
+ SET v2 = vectors[j]
+ SET ps = dot_product(v1, v2)
+ IF (ps =0) THEN
+ PRINT "Vectors (" + v1 + ") and (" + v2 + ") are orthogonal."
+ ELSE
+ PRINT "Vectors (" + v1 + ") and (" + v2 + ") are not orthogonal."
+ END IF
+ END FOR
+ END FOR
+ END FUNCTION
+
+ // Testing the function
+ let vectors = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+ let n = vectors.length;
+ are_vectors_orthogonal(n, vectors);
+ 
+END
